@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "13，完成输出tf的流程.md",
+                "file": "10，命名空间.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "13，完成输出tf的流程"
+              "title": "10，命名空间"
             }
           }
         ]
@@ -171,11 +171,21 @@
   },
   "active": "d891c8f802b54b5b",
   "lastOpenFiles": [
+    "09，启动文件launch file.md",
+    "08，参数parameters.md",
+    "07，使用自定义的接口.md",
+    "06，自定义接口interface.md",
+    "05，服务service（服务器-客户端）.md",
+    "04，记录话题-----重放话题.md",
+    "03，话题topic（发布者-订阅者）.md",
+    "02，节点的常见操作.md",
+    "01，节点node的基础创建.md",
+    "12，urdf文件.md",
+    "13，完成输出tf的流程.md",
     "11，TF2（Transform）.md",
     "7，使用自定义的接口.md",
     "15，gazebo.md",
     "14，xacro让urdf文件更加动态.md",
-    "13，完成输出tf的流程.md",
     "8，参数parameters.md",
     "2，节点的常见操作.md",
     "sedEPR5A6",
@@ -190,7 +200,6 @@
     "sedoEeYut",
     "3，话题topic（发布者-订阅者）.md",
     "5，服务service（服务器-客户端）.md",
-    "12，urdf文件.md",
     "1，节点node的基础创建.md",
     "10，命名空间.md",
     "4，记录话题-----重放话题.md",
@@ -208,15 +217,6 @@
     "src/turtlebot3_ws/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_autorace_2020/traffic_noentry/materials/textures/traffic_noentry.png",
     "src/turtlebot3_ws/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_autorace_2020/traffic_light/materials/textures/traffic_light_yellow.png",
     "src/turtlebot3_ws/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_autorace_2020/traffic_light/materials/textures/traffic_light_red.png",
-    "src/turtlebot3_ws/turtlebot3_simulations/README.md",
-    "src/turtlebot3_ws/turtlebot3_simulations/CONTRIBUTING.md",
-    "src/turtlebot3_ws/turtlebot3/README.md",
-    "src/turtlebot3_ws/turtlebot3/ISSUE_TEMPLATE.md",
-    "src/turtlebot3_ws/turtlebot3/CONTRIBUTING.md",
-    "src/pymoveit2/README.md",
-    "src/Nav2_TurtleBot3_Installation_Guide.md",
-    "src/最终任务说明.md",
-    "src/CLAUDE.md",
     "未命名.canvas"
   ]
 }
