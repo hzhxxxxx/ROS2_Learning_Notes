@@ -1,18 +1,18 @@
 
 【1】，其实就是节点的参数，可以类比为函数的输入参数
 举个例子:
-![[Pasted image 20250924185739.png]]
+![Pasted image 20250924185739.png](<attachments/Pasted image 20250924185739.png>)
 一个驱动相机的节点，它可能需要设定“usb设备名字”，“帧数”，”模式“，这个人工设定的参数可以设定为节点上的一个参数接口，供人为外部设定修改
 
 
 【2】，设定参数（代码）
-![[Pasted image 20250924185914.png]]
+![Pasted image 20250924185914.png](<attachments/Pasted image 20250924185914.png>)
 拿一个发布者来举例子，这里是定时周期发布一个数字，那这里的人为参数可以为”数字“，”定时器周期“
 
 具体添加的步骤就是，创建一个参数，然后获取参数的值
 
 【3】，启动节点的时候使用参数
-![[Pasted image 20250924190116.png]]
+![Pasted image 20250924190116.png](<attachments/Pasted image 20250924190116.png>)
 跟之前的重命名有点像，只不过重命名是-r，使用参数是-p
 
 -p 参数名字:=具体值
@@ -22,49 +22,50 @@
 【4】，常用的param命令
 
 通过param list可以看到全部参数有哪些
-![[Pasted image 20250924190300.png]]
-![[Pasted image 20250924191945.png]]
+![Pasted image 20250924190300.png](<attachments/Pasted image 20250924190300.png>)
+![Pasted image 20250924191945.png](<attachments/Pasted image 20250924191945.png>)
 
 通过param get 可以获取这个参数此时的值（类型）
-![[Pasted image 20250924192017.png]]
+![Pasted image 20250924192017.png](<attachments/Pasted image 20250924192017.png>)
 
 
 【5】把参数保存为一个yaml文件，输入参数的时候就读取文件
 
 1，创建一个放yaml的文件夹，并且创建yaml文件（文件夹的位置无所谓，只要知道这个文件夹跟项目主文件夹的相对位置就行）
-![[Pasted image 20250924195904.png]]![[Pasted image 20250924195923.png]]
-![[Pasted image 20250924195935.png]]
+![Pasted image 20250924195904.png](<attachments/Pasted image 20250924195904.png>)
+![Pasted image 20250924195923.png](<attachments/Pasted image 20250924195923.png>)
+![Pasted image 20250924195935.png](<attachments/Pasted image 20250924195935.png>)
 
 2，编辑这个yaml文件
 （通过vscode编辑也行，直接通过gedit编辑这个文本文件更直接一点）
-![[Pasted image 20250924200016.png]]
-![[Pasted image 20250924200217.png]]
+![Pasted image 20250924200016.png](<attachments/Pasted image 20250924200016.png>)
+![Pasted image 20250924200217.png](<attachments/Pasted image 20250924200217.png>)
 （完事之后记得保存）
 
 3，通过命令行运行节点的时候读取yaml作为参数文件
-![[Pasted image 20250924200354.png]]
+![Pasted image 20250924200354.png](<attachments/Pasted image 20250924200354.png>)
 ros2 run my_py_pkg number_publisher --ros-args --params-file ~/yaml_params/number_params.yaml 
 (注意的是最后是该项目主文件和你的yaml文件的相对路径，这个~代表返回上一层)
 
 
 4，可以同时写两个节点的参数
-![[Pasted image 20250924200603.png]]
+![Pasted image 20250924200603.png](<attachments/Pasted image 20250924200603.png>)
 通过重命名来同时修改两个节点的参数
-![[Pasted image 20250924200632.png]]
-![[Pasted image 20250924200644.png]]
+![Pasted image 20250924200632.png](<attachments/Pasted image 20250924200632.png>)
+![Pasted image 20250924200644.png](<attachments/Pasted image 20250924200644.png>)
 （注意！这个yaml文件的思路是去找每个文件里写的节点名字有没有，如果没有这个节点，他就不会写入对应的参数）
 
 
 
 【6】，参数回调函数
 有一个命令param set是在节点运行之后，再中途修改参数:
-![[Pasted image 20250925194547.png]]
+![Pasted image 20250925194547.png](<attachments/Pasted image 20250925194547.png>)
 这种中途修改参数的方法，可以通过get读取成功修改后的数值
-![[Pasted image 20250925194634.png]]
+![Pasted image 20250925194634.png](<attachments/Pasted image 20250925194634.png>)
 但是实际上这个节点内部并没有修改
-![[Pasted image 20250925194704.png]]
+![Pasted image 20250925194704.png](<attachments/Pasted image 20250925194704.png>)
 *如果没有参数回调的话，原因是*，我们只在节点启动的时候的初始化函数里面把参数赋值到节点内部了，换句话说如果运行中途修改参数值节点就无法读取到修改的值
 
 *参数回调函数*：
-![[Pasted image 20250925195140.png]]
+![Pasted image 20250925195140.png](<attachments/Pasted image 20250925195140.png>)
 添加上参数回调函数之后，就可以中途set修改参数，然后节点能成功读取修改后的数值

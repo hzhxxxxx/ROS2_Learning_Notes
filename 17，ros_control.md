@@ -1,6 +1,6 @@
 
 ### 1，定义
-![[Pasted image 20251009194110.png]]
+![Pasted image 20251009194110.png](<attachments/Pasted image 20251009194110.png>)
 
 整体架构：
 
@@ -17,19 +17,19 @@
   实际硬件 (左右轮电机)
 
 
-![[Pasted image 20251009195143.png]]
+![Pasted image 20251009195143.png](<attachments/Pasted image 20251009195143.png>)
 
 
 
 
 
 当没有实际硬件的时候，可以使用这个mock component来模拟一个硬件组件
-![[Pasted image 20251009194429.png]]
+![Pasted image 20251009194429.png](<attachments/Pasted image 20251009194429.png>)
 
 ### 2，控制器和硬件接口之间的“接口规范合同”
 
 是一个xacro，放在urdf里面
-![[Pasted image 20251009194715.png]]
+![Pasted image 20251009194715.png](<attachments/Pasted image 20251009194715.png>)
 ```xml
 <?xml version="1.0"?>
 
@@ -92,15 +92,15 @@
 
 其实就是定义了manager和具体控制器（有哪些控制器，控制器具体参数的配置）
 一个yaml文件
-![[Pasted image 20251010152953.png]]
+![Pasted image 20251010152953.png](<attachments/Pasted image 20251010152953.png>)
 
 https://github.com/ros-controls/ros2_controllers/tree/humble
 这个是所有的现成控制器
 
 我们代码里面的type对应网站xml里面的name：
-![[Pasted image 20251010153544.png]]
+![Pasted image 20251010153544.png](<attachments/Pasted image 20251010153544.png>)
 网站里面的yaml对应具体的参数配置：
-![[Pasted image 20251010153621.png]]
+![Pasted image 20251010153621.png](<attachments/Pasted image 20251010153621.png>)
 
 
 
@@ -184,7 +184,7 @@ diff_drive_controller:
 ros2 run robot_state_publisher robot_state_publisher --ros-args -p robot_description:="$(xacro /home/hzh/ros2_ws/src/my_robot_description/urdf/my_robot.urdf.xacro)"
 ```
 
-![[Pasted image 20251010153907.png]]
+![Pasted image 20251010153907.png](<attachments/Pasted image 20251010153907.png>)
 
 （2），启动controller_manager
 （之前说过，manager可以把控制器跟硬件接口整合到一起）
@@ -197,7 +197,7 @@ ros2 run controller_manager ros2_control_node --ros-args --params-file /home/hzh
 ```
 
 
-![[Pasted image 20251010154411.png]]
+![Pasted image 20251010154411.png](<attachments/Pasted image 20251010154411.png>)
 
 （3），启动具体的控制器
 根据yaml文件里面写的控制器名字，来手动启动具体的控制器
@@ -209,7 +209,7 @@ ros2 run controller_manager spawner diff_drive_controller
 
 ```
 
-![[Pasted image 20251010154652.png]]
+![Pasted image 20251010154652.png](<attachments/Pasted image 20251010154652.png>)
 
 
 （4），启动rviz
@@ -219,17 +219,17 @@ ros2 run controller_manager spawner diff_drive_controller
 ros2 run rviz2 rviz2 -d /home/hzh/ros2_ws/src/my_robot_bringup/rviz/urdf_config.rviz
 ```
 
-![[Pasted image 20251010154803.png]]
+![Pasted image 20251010154803.png](<attachments/Pasted image 20251010154803.png>)
 
 （5），到这里其实就已经全部ok了，接下来测试一下
 
 *其实从这里就能看出来，我们这个ros_control的控制器，效果跟之前gazebo的插件差不多，只不过gazebo的插件只能在gazebo里面生效（导出到ros还得bridge一下），而这个控制器的通用性更好。*
 
-![[Pasted image 20251010164739.png]]
+![Pasted image 20251010164739.png](<attachments/Pasted image 20251010164739.png>)
 
-![[Pasted image 20251010155217.png]]
+![Pasted image 20251010155217.png](<attachments/Pasted image 20251010155217.png>)
 
-![[Pasted image 20251010155256.png]]
+![Pasted image 20251010155256.png](<attachments/Pasted image 20251010155256.png>)
 
 ```
 ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_drive_controller/cmd_vel -p stamped:=true
@@ -237,14 +237,14 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/di
 注意这里cmd_vel的名字要重新映射一下，而且要加上后面那个参数，代表加上时间戳
 
 然后就能通过键盘控制机器人了
-![[Pasted image 20251010155415.png]]
+![Pasted image 20251010155415.png](<attachments/Pasted image 20251010155415.png>)
 
 
 ### 5，用启动文件启动整个流程
 
 其实就是把上面手动的过程，写成launch文件，跟以前是一样的
 
-![[Pasted image 20251010165626.png]]
+![Pasted image 20251010165626.png](<attachments/Pasted image 20251010165626.png>)
 
 ```xml
 <launch>
@@ -293,7 +293,7 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/di
 
 
 因为这里用到了controller_manager这个包，所以需要在package.xml里面写一个新的依赖！
-![[Pasted image 20251010165825.png]]
+![Pasted image 20251010165825.png](<attachments/Pasted image 20251010165825.png>)
 
 
 ### 6，常用的control命令
@@ -302,13 +302,13 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/di
 ```
 ros2 control list_controllers
 ```
-![[Pasted image 20251010170217.png]]
+![Pasted image 20251010170217.png](<attachments/Pasted image 20251010170217.png>)
 
 （2），列出所有可能可用的控制器（在网站上也能找到）
 ```
 ros2 control list_controller_types 
 ```
-![[Pasted image 20251010170303.png]]
+![Pasted image 20251010170303.png](<attachments/Pasted image 20251010170303.png>)
 
 （3），查看现在的硬件接口
 
@@ -317,7 +317,7 @@ ros2 control list_controller_types
 ros2 control list_hardware_interfaces
 ```
 
-![[Pasted image 20251010170600.png]]
+![Pasted image 20251010170600.png](<attachments/Pasted image 20251010170600.png>)
 可以看到command interfaces（正向传输）和state interfaces（闭环反向反馈），对于command interfaces来说，这个claimed就说明它已经被某一个控制器占用了（我们的diffdrive定义的时候定义了这两个硬件接口），它只能被一个控制器占用。
 而对于state interfaces来说，谁都可以调用他的信息
 
@@ -330,7 +330,7 @@ ros2 control list_hardware_interfaces
 ros2 control list_hardware_components
 ```
 
-![[Pasted image 20251010171107.png]]
+![Pasted image 20251010171107.png](<attachments/Pasted image 20251010171107.png>)
 
 
 ### 7，硬件驱动
@@ -358,18 +358,18 @@ ROS2 Hardware Interface (ros2_control)
 ### 8，创建硬件接口包
 
 （1），在代码区中创建一个硬件接口的包
-![[Pasted image 20251011145728.png]]
+![Pasted image 20251011145728.png](<attachments/Pasted image 20251011145728.png>)
 ```
 ros2 pkg create my_robot_hardware --build-type ament_cmake --dependencies rclcpp
 ```
 
 创建好之后应该是这样的
-![[Pasted image 20251011145918.png]]
+![Pasted image 20251011145918.png](<attachments/Pasted image 20251011145918.png>)
 
 
 （2），把硬件驱动
 文件放到include文件夹底下
-![[Pasted image 20251011145944.png]]
+![Pasted image 20251011145944.png](<attachments/Pasted image 20251011145944.png>)
 
 
 （3），修改cmake和package.xml
@@ -384,7 +384,7 @@ find_package(dynamixel_sdk_REQUIRED)
 include_directories(include)
 ```
 
-![[Pasted image 20251011150256.png]]
+![Pasted image 20251011150256.png](<attachments/Pasted image 20251011150256.png>)
 
 
 
@@ -394,10 +394,10 @@ package.xml需要加上我们依赖的库
 <depend>dynamixel_sdk</depend>
 ```
 
-![[Pasted image 20251011150309.png]]
+![Pasted image 20251011150309.png](<attachments/Pasted image 20251011150309.png>)
 
 还有一点！因为我们用到的是c++，所以依赖路径处理比较麻烦，*需要在.vscode里面，有个includepath中添加我们include文件夹的路径！！*
-![[Pasted image 20251011192721.png]]
+![Pasted image 20251011192721.png](<attachments/Pasted image 20251011192721.png>)
 
 ### 9，编写硬件接口文件,hpp和cpp
 
@@ -406,7 +406,7 @@ package.xml需要加上我们依赖的库
 	激活的第二部，一般是激活电机
 	反向关闭的话就是反过来
 	
-	![[Pasted image 20251011153628.png]]
+	![Pasted image 20251011153628.png](<attachments/Pasted image 20251011153628.png>)
 
 - 2，*其次就是我们的硬件接口文件，是通过  头文件.hpp    和  源文件.cpp  构成的*
 	Hardware Interface (硬件接口) = .hpp + .cpp
@@ -427,14 +427,14 @@ package.xml需要加上我们依赖的库
 	在include文件夹底下写hpp
 	（一些依赖，在上面第八步已经完成了）
 	mobile_base_hardware_interface.hpp
-	![[Pasted image 20251011192905.png]]
+	![Pasted image 20251011192905.png](<attachments/Pasted image 20251011192905.png>)
 
 - 4，写cpp源文件
 	在src文件夹底下写cpp
 	mobile_base_hardware_interface.cpp
-	![[Pasted image 20251011193036.png]]
-	![[Pasted image 20251011193058.png]]
-	![[Pasted image 20251011193106.png]]
+	![Pasted image 20251011193036.png](<attachments/Pasted image 20251011193036.png>)
+	![Pasted image 20251011193058.png](<attachments/Pasted image 20251011193058.png>)
+	![Pasted image 20251011193106.png](<attachments/Pasted image 20251011193106.png>)
 
 
 
@@ -444,7 +444,7 @@ package.xml需要加上我们依赖的库
 my_robot_hardware_interface.xml
 （跟cmake平级）
 
-![[Pasted image 20251012162827.png]]
+![Pasted image 20251012162827.png](<attachments/Pasted image 20251012162827.png>)
 
 
 ### 11，在package和cmake中再次添加依赖的库
@@ -461,7 +461,7 @@ my_robot_hardware_interface.xml
 
 <depend>dynamixel_sdk</depend>
 ```
-![[Pasted image 20251012163328.png]]
+![Pasted image 20251012163328.png](<attachments/Pasted image 20251012163328.png>)
 
 - 2，在cmake里面添加的是
 ```txt
@@ -478,7 +478,7 @@ find_package(pluginlib REQUIRED)
 find_package(dynamixel_sdk_REQUIRED)
 ```
 
-![[Pasted image 20251012163415.png]]
+![Pasted image 20251012163415.png](<attachments/Pasted image 20251012163415.png>)
 
 像dynamixel_sdk是我们之前添加硬件驱动时候，硬件驱动所依赖的库
 然后rclcpp_lifecycle是因为我们的硬件接口是生命节点
@@ -551,22 +551,22 @@ rclcpp_lifecycle
 )   （你的依赖库）
 ```
 
-![[Pasted image 20251012165307.png]]
+![Pasted image 20251012165307.png](<attachments/Pasted image 20251012165307.png>)
 
 
 ### 12，把我们原来控制器用的mock虚拟硬件接口，替换成我们自己写的硬件接口
 
-![[Pasted image 20251012170425.png]]
+![Pasted image 20251012170425.png](<attachments/Pasted image 20251012170425.png>)
 
 这个名字就是我们注册表文件里面的name
-![[Pasted image 20251012170449.png]]
+![Pasted image 20251012170449.png](<attachments/Pasted image 20251012170449.png>)
 
 ### 13，运行
 
-运行成功之后应该是这样的![[Pasted image 20251012171744.png]]
+运行成功之后应该是这样的![Pasted image 20251012171744.png](<attachments/Pasted image 20251012171744.png>)
 
 如果没有插入真实硬件就是
-![[Pasted image 20251012171834.png]]
+![Pasted image 20251012171834.png](<attachments/Pasted image 20251012171834.png>)
 查看info可以看到on_init成功了，因为这个初始化只是urdf和变量的初始化
 然后发现on_configure失败了，因为我们没有真实的硬件，所以硬件的初始化连接失败
 后面的步骤就无法进行
@@ -584,7 +584,7 @@ info_.hardware_parameters["left_motor_id"]
 std::stoi(info_.hardware_parameters["left_motor_id"])
 ```
 string to int
-![[Pasted image 20251013161325.png]]
+![Pasted image 20251013161325.png](<attachments/Pasted image 20251013161325.png>)
 
 
 
@@ -598,12 +598,12 @@ string to int
 
 <param name="dynamixel_port">/dev/ttyACM0</param>
 ```
-![[Pasted image 20251013161303.png]]
+![Pasted image 20251013161303.png](<attachments/Pasted image 20251013161303.png>)
 
 ### 15，总结
 
 飞书文档
 https://ccnj3kuvti9y.feishu.cn/docx/KjU2dBdoDoklvcxixVdciMbkn9e
 
-![[Pasted image 20251013161632.png]]
-![[Pasted image 20251013161644.png]]
+![Pasted image 20251013161632.png](<attachments/Pasted image 20251013161632.png>)
+![Pasted image 20251013161644.png](<attachments/Pasted image 20251013161644.png>)
