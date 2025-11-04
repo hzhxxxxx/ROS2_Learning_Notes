@@ -1,0 +1,15 @@
+{
+  "minimal-style@@blockquote-background-color@@dark": "#303236",
+  "minimal-style@@bold-color@@dark": "#ED5A65",
+  "minimal-style@@italic-color@@dark": "#DDC871",
+  "minimal-advanced@@hide-markdown": false,
+  "minimal-style@@blockquote-color@@dark": "#CDD1D3",
+  "minimal-style@@blockquote-border-color@@dark": "#485C84",
+  "minimal-style@@image-muted": 1,
+  "minimal-style@@h1-color@@dark": "#ED5A65",
+  "minimal-style@@h2-color@@dark": "#C9A063",
+  "minimal-style@@h3-color@@dark": "#10AEC2",
+  "minimal-style@@h1-size": "1.7em",
+  "minimal-style@@h2-size": "1.5em",
+  "minimal-style@@h3-size": "1.3em"
+}

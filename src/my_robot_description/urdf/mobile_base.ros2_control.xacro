@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+     <!--名字无所谓，类型其实有各种，但是system包括了他们全部，所以暂时先用syste就行-->
+    <ros2_control name="MobileBase" type="system" > 
+        <hardware>
+            <!-- <plugin>mock_components/GenericSystem</plugin>
+            <param name="calculate_dynamics">true</param> -->
+            <plugin>mobile_base_hardware/MobileBaseHardwareInterface</plugin>
+            <param name="left_motor_id">10</param>
+            <param name="right_motor_id">20</param>
+            <param name="dynamixel_port">/dev/ttyACM0</param>
+        </hardware>
+        <joint name="base_right_wheel_joint"> <!-- 你想控制哪个关节 -->
+            <command_interface name="velocity" /> <!-- 你要通过什么参数来控制这个关节 -->
+            <state_interface name="position" />
+            <state_interface name="velocity" />  <!-- 状态参数（闭环控制） -->
+        </joint>
+        <joint name="base_left_wheel_joint"> <!-- 你想控制哪个关节 -->
+            <command_interface name="velocity" /> <!-- 你要通过什么参数来控制这个关节 -->
+            <state_interface name="position" />
+            <state_interface name="velocity" />  <!-- 状态参数（闭环控制） -->
+        </joint>
+    </ros2_control>
+
+</robot>

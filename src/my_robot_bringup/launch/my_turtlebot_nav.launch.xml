@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+    <!--
+    TurtleBot3 Navigation Launch File
+
+    This launch file starts the complete navigation stack:
+    1. Gazebo simulation with TurtleBot3 world
+    2. Nav2 navigation stack (using default parameters)
+    3. RViz for visualization
+
+    Usage:
+    ros2 launch my_robot_bringup my_turtlebot_nav.launch.xml
+    -->
+
+    <!-- Step 1: Launch Gazebo with TurtleBot3 world -->
+    <include file="$(find-pkg-share turtlebot3_gazebo)/launch/turtlebot3_world.launch.py">
+    </include>
+
+    <!-- Step 2: Launch Nav2 navigation stack -->
+    <include file="$(find-pkg-share nav2_bringup)/launch/bringup_launch.py">
+        <arg name="use_sim_time" value="true"/>
+        <arg name="map" value="/home/hzh/maps/my_map.yaml"/>
+        <arg name="params_file" value="$(find-pkg-share my_robot_bringup)/config/nav2_params_custom.yaml"/>
+    </include>
+
+    <!-- Step 3: Launch RViz with custom navigation configuration -->
+    <node pkg="rviz2" exec="rviz2" name="rviz2" output="screen" args="-d $(find-pkg-share my_robot_bringup)/rviz/my_nav.rviz"/>
+
+</launch>

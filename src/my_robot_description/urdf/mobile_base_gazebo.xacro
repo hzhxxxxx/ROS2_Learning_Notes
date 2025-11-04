@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- 给前面万向轮那个关节添加摩擦系数，因为如果是纯固定的话，可能会导致机器人移动困难 -->
+    <gazebo reference="caster_wheel_link">
+        <mu1 value="0.1" />
+        <mu2 value="0.1" />
+    </gazebo>
+
+    <!-- gazebo插件双轮控制系统 -->
+    <gazebo>
+        <plugin 
+            filename="gz-sim-diff-drive-system" 
+            name="gz::sim::systems::DiffDrive">
+            <left_joint>base_left_wheel_joint</left_joint>
+            <right_joint>base_right_wheel_joint</right_joint>
+            <wheel_separation>0.45</wheel_separation>
+            <wheel_radius>0.1</wheel_radius>
+            <frame_id>odom</frame_id> <!-- <frame_id> = 起跑线（固定不动）-->
+            <child_frame_id>base_footlink</child_frame_id> <!-- <child_frame_id> = 你现在的位置 -->
+        </plugin>
+    </gazebo>
+
+    <!-- 加入gazebo里面虚拟的joint-state-publisher（编码器）这个插件很通用 -->
+    <!-- 这里要选择需要publish的关节名字 -->
+    <gazebo>
+        <plugin 
+            filename="gz-sim-joint-state-publisher-system" 
+            name="gz::sim::systems::JointStatePublisher">
+            <joint_name>base_left_wheel_joint</joint_name>
+            <joint_name>base_right_wheel_joint</joint_name>
+        </plugin>
+    </gazebo>
+
+</robot>

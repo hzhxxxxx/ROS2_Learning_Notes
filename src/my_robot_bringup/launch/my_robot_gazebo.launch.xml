@@ -1,0 +1,30 @@
+<launch>
+    <!--<let name="urdf_path" value="$(find-pkg-share my_robot_description)/urdf/my_robot.urdf.xacro" />-->
+    <let name="urdf_path" value="$(find-pkg-share my_robot_description)/urdf/my_robot.urdf.xacro" />
+    <node pkg="robot_state_publisher" exec="robot_state_publisher">
+        <param name="robot_description" value="$(command 'xacro $(var urdf_path)')" /> 
+    </node>
+
+    <!-- ros2 launch ros_gz_sim gz_sim.launch.py gz_args:="empty.sdf -r"的写法 -->
+    <!-- 即在一个launch文件中启动另一个launch文件，用include file=。。。。 -->
+    <!-- 注意这里用的是arg，而且这里的用法其实跟param参数差不多 -->
+    <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
+        <arg name="gz_args" value="$(find-pkg-share my_robot_bringup)/worlds/test_world.sdf -r" />
+        <!-- <arg name="gz_args" value="empty.sdf -r" />  -->
+    </include>
+
+    <!-- ros2 run ros_gz_sim create -topic robot_description 的写法 -->
+    <!-- 正常情况下直接写args=”....内容“就行 -->
+    <node pkg="ros_gz_sim" exec="create" args="-topic robot_description" />
+
+    
+    <!-- 使用 YAML 配置文件启动 ros_gz_bridge -->
+    <let name="bridge_config_path" value="$(find-pkg-share my_robot_bringup)/config/gazebo_bridge.yaml" />
+    <node pkg="ros_gz_bridge" exec="parameter_bridge">
+        <param name="config_file" value="$(var bridge_config_path)"/>
+    </node>
+
+    <let name="rviz_config" value="$(find-pkg-share my_robot_bringup)/rviz/urdf_config.rviz" />
+    <node pkg="rviz2" exec="rviz2" output="screen" args="-d $(var rviz_config)" />  
+
+</launch>

@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "2b9344645e02b9e0",
+    "type": "split",
+    "children": [
+      {
+        "id": "b4074c33b402c601",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d891c8f802b54b5b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "669f6411a287a505",
+    "type": "split",
+    "children": [
+      {
+        "id": "b889bffce1ac1e0f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2d960ee5baaae304",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "404c5a224c5a0bd2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "989377696398db2f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "7cce0bcd9a3c402f",
+    "type": "split",
+    "children": [
+      {
+        "id": "fd68583330ca2349",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c47af24a81e5a5b7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "第二章/2.1 C-space.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "2.1 C-space 的反向链接列表"
+            }
+          },
+          {
+            "id": "f903e757e16d20e7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "第二章/2.1 C-space.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "2.1 C-space 的出链列表"
+            }
+          },
+          {
+            "id": "3bfd31928fb9690f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "06637f9a69a26d00",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "第二章/2.1 C-space.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "2.1 C-space 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:创建新数据库": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "d891c8f802b54b5b",
+  "lastOpenFiles": [
+    "src/my_robot_moveit_config/launch/warehouse_db.launch.py",
+    "src/my_robot_moveit_config/launch/static_virtual_joint_tfs.launch.py",
+    "src/my_robot_moveit_config/launch/spawn_controllers.launch.py",
+    "src/my_robot_moveit_config/launch/setup_assistant.launch.py",
+    "src/my_robot_moveit_config/launch/rsp.launch.py",
+    "src/my_robot_moveit_config/launch/moveit_rviz.launch.py",
+    "src/my_robot_moveit_config/launch/move_group.launch.py",
+    "src/my_robot_moveit_config/launch/demo.launch.py",
+    "src/my_robot_moveit_config/config/ros2_controllers.yaml",
+    "src/my_robot_moveit_config/config/pilz_cartesian_limits.yaml",
+    "src/my_robot_moveit_config/config/my_robot.urdf.xacro",
+    "src/my_robot_commander_cpp/commander命令数据类型示例.md",
+    "src/turtlebot3_ws/turtlebot3_msgs/README.md",
+    "src/turtlebot3_ws/turtlebot3_msgs/CONTRIBUTING.md",
+    "src/turtlebot3_ws/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_common/meshes/sensors/r200.jpg",
+    "src/turtlebot3_ws/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_common/meshes/sensors/astra.jpg",
+    "src/turtlebot3_ws/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_autorace_2020/traffic_tunnel/materials/textures/tunnel.png",
+    "src/turtlebot3_ws/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_autorace_2020/traffic_stop/materials/textures/traffic_stop.png",
+    "src/turtlebot3_ws/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_autorace_2020/traffic_right/materials/textures/traffic_right.png",
+    "src/turtlebot3_ws/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_autorace_2020/traffic_pl_left/materials/textures/traffic_pl_left.png",
+    "src/turtlebot3_ws/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_autorace_2020/traffic_parking/materials/textures/traffic_parking.png",
+    "src/turtlebot3_ws/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_autorace_2020/traffic_noentry/materials/textures/traffic_noentry.png",
+    "src/turtlebot3_ws/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_autorace_2020/traffic_light/materials/textures/traffic_light_yellow.png",
+    "src/turtlebot3_ws/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_autorace_2020/traffic_light/materials/textures/traffic_light_red.png",
+    "src/turtlebot3_ws/turtlebot3_simulations/README.md",
+    "src/turtlebot3_ws/turtlebot3_simulations/CONTRIBUTING.md",
+    "src/turtlebot3_ws/turtlebot3/README.md",
+    "src/turtlebot3_ws/turtlebot3/ISSUE_TEMPLATE.md",
+    "src/turtlebot3_ws/turtlebot3/CONTRIBUTING.md",
+    "src/pymoveit2/README.md",
+    "src/Nav2_TurtleBot3_Installation_Guide.md",
+    "src/最终任务说明.md",
+    "src/CLAUDE.md",
+    "src/ROS2_Gazebo_Bridge_Setup.md",
+    "18，Moveit2.md",
+    "17，ros_control.md",
+    "16，相机仿真.md",
+    "10，命名空间.md",
+    "4，记录话题-----重放话题.md",
+    "README.md",
+    "19，Nav2.md",
+    "15，gazebo.md",
+    "Readme.md",
+    "1，节点node的基础创建.md",
+    "2，节点的常见操作.md",
+    "3，话题topic（发布者-订阅者）.md",
+    "未命名.canvas"
+  ]
+}

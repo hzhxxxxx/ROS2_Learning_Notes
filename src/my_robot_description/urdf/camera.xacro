@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+    <xacro:property name="camera_length" value="0.01" />
+    <xacro:property name="camera_width" value="0.1" />
+    <xacro:property name="camera_height" value="0.05" />
+
+    <link name="camera_link">
+        <visual>
+            <geometry>
+                <box size="${camera_length} ${camera_width} ${camera_height}" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="grey" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${camera_length} ${camera_width} ${camera_height}" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
+
+        <xacro:box_inertia m="0.1" x="${camera_length}" y="${camera_width}" z="${camera_height}"
+                           o_xyz="0 0 0" o_rpy="0 0 0" />
+
+    </link>
+
+    <joint name="base_camera_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="camera_link" />
+        <origin xyz="${(base_length + camera_length) / 2.0} 0 ${base_height / 2.0}" rpy="0 0 0" />
+    </joint>
+
+    <link name="camera_link_optical" />
+
+    <joint name="camera_optical_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+        <parent link="camera_link"/>
+        <child link="camera_link_optical"/>
+    </joint>
+
+    <!--关于gazebo插件中reference vs plugin 的区别-->
+    <!-- reference="camera_link" 指定这个Gazebo配置应用到哪个link上 -->
+    <!-- plugin 通常用于加载特定的Gazebo插件库 -->
+    <gazebo reference="camera_link">
+        <sensor name="camera" type="camera">
+            <camera>
+                <horizontal_fov>1.3962634</horizontal_fov>  <!--水平视野角度 (1.3962634弧度 ≈ 80度)-->
+                <image> <!--图像参数-->
+                    <width>640</width>  <!--图像分辨率 640x480-->
+                    <height>480</height>
+                    <format>R8G8B8</format> <!--颜色格式 R8G8B8 (RGB 8位)-->
+                </image>
+                <clip>  <!--渲染距离-->
+                    <near>0.1</near>    <!--最近渲染距离 0.1米-->
+                    <far>15</far>   <!--最远渲染距离 15米-->
+                </clip>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+                <optical_frame_id>camera_link_optical</optical_frame_id>
+                <camera_info_topic>camera/camera_info</camera_info_topic> <!--相机信息话题名-->
+            </camera>
+            <always_on>1</always_on>    <!--传感器始终开启-->
+            <update_rate>20</update_rate>   <!--更新频率 20Hz-->
+            <visualize>true</visualize> <!--在Gazebo中可视化-->
+            <topic>camera/image_raw</topic> <!--图像数据发布话题名-->            
+        </sensor>
+    </gazebo>
+
+</robot>

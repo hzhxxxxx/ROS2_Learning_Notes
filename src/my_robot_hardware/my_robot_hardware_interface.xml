@@ -1,0 +1,13 @@
+<library path="my_robot_hardware"> <!-- 这个包的名字 -->
+    <!-- name是hpp里面开头，命名空间/class名字 -->
+    <!-- type跟name差不多，只是name我们用/ ， type我们用:: -->
+    <!-- base_class_type是父类名字 -->
+    <!-- 其实这些名字在cpp的最后也有写一遍，所以也可以去那边找 -->
+    <class name="mobile_base_hardware/MobileBaseHardwareInterface"  
+            type="mobile_base_hardware::MobileBaseHardwareInterface"
+            base_class_type="hardware_interface::SystemInterface" >
+        <description>  <!-- 就是一个注释罢了 -->
+            Hardware interface for a mobile base with 2 Dynamixel motors
+        </description>
+    </class>
+</library>
